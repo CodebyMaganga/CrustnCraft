@@ -2,6 +2,7 @@ from flask import Flask, make_response, jsonify, request
 from flask_migrate import Migrate
 from models import db, Restaurant,Pizza, restaurant_pizza
 
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
@@ -10,6 +11,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 migrate = Migrate(app,db)
 
 db.init_app(app)
+
+
 
 @app.route('/')
 def index():
@@ -57,33 +60,23 @@ def create_pizzeria():
     data = request.get_json()
 
     new_item = restaurant_pizza.insert().values(
-        restaurant_id=data['restaurant_id'],
-        pizza_id=data['pizza_id'],
-        price=data['price']
+    restaurant_id=data['restaurant_id'],
+    pizza_id=data['pizza_id'],
+    Price=data['Price']
     )
 
-    db.session.add(new_item)
+
+    db.session.execute(new_item)
     db.session.commit()
 
     new_pizza = Pizza.query.filter_by(id=data['pizza_id']).first()
 
-    if new_pizza:
-        pizza_info={
-            "id": new_pizza.id,
-            'name': new_pizza.name ,
-            'ingredients': new_pizza.ingredients
-        }
-
-        return jsonify(pizza_info)
+   
     
-    return jsonify({ "errors": ["validation errors"]}), 403
-
     
 
+    return make_response(jsonify(new_pizza.to_dict()), 200)
 
-    
-
-
-
+        
 if __name__ == "__main__":
     app.run(debug=True, port=5555)
