@@ -23,18 +23,9 @@ class Restaurant(db.Model, SerializerMixin):
     def __repr__(self):
         return f"<{self.name}: {self.address}>"
     
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "address": self.address,
-            "pizzas": [pizza.to_dict() for pizza in self.pizzas]
-        }
-
+    
 class Pizza(db.Model, SerializerMixin):
     __tablename__ = 'pizzas'
-
-    
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)

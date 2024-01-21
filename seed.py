@@ -2,6 +2,7 @@ from models import db, Restaurant, restaurant_pizza, Pizza
 from random import choice as rc
 from faker import Faker
 from app import app
+import random
 
 
 
@@ -16,7 +17,7 @@ with app.app_context():
     restaurants = []
     pizzas = []
 
-    for _ in range(20):
+    for _ in range(5):
         restaurant= Restaurant(name=fake.name(), address=fake.address(),)
         restaurants.append(restaurant)
     
@@ -65,7 +66,9 @@ with app.app_context():
     for restaurant in restaurants:
         for _ in range(3):
             random_restaurant=rc(restaurants)
-            pizza = Pizza(name=fake.name(), ingredients=rc(ingredients))
+            pizza_name = fake.name()
+            pizza_ingredients = random.sample(ingredients, 4)
+            pizza = Pizza(name=pizza_name, ingredients=", ".join(pizza_ingredients))
             pizzas.append(pizza)
             random_pizza = rc(pizzas)
             restaurant_pizza_table = {'restaurant_id': random_restaurant.id, 'pizza_id':random_pizza.id, 'Price': rc(range(1,31))}
