@@ -2,7 +2,7 @@ import React from "react";
 import Pizza from "../assets/pizza.jpg";
 import Users from "../assets/users1.png";
 import Delivery from "../assets/bike-delivery.png";
-import { IoIosPeople } from "react-icons/io";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const TopHero = () => {
   return (
@@ -21,7 +21,9 @@ const TopHero = () => {
         <p className="text-white font-bold">
           Embark on a delectable journey with our irresistible pizza creations!{" "}
         </p>
-        <button>Order Now</button>
+        <div className="flex flex-row">
+          <button className="bg-black text-white p-4">Order Now</button>
+        </div>
       </div>
       <div className="absolute bottom-14 left-20 text-white flex flex-row gap-10">
         <div>
