@@ -21,7 +21,7 @@ const TopHero = () => {
         <p className="text-white font-bold">
           Embark on a delectable journey with our irresistible pizza creations!{" "}
         </p>
-        <div className="flex flex-row">
+        <div className="flex flex-row mt-4">
           <button className="bg-black text-white p-4">Order Now</button>
         </div>
       </div>

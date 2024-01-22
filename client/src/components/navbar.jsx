@@ -1,12 +1,24 @@
-import React from "react";
+import { useState } from "react";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import SideBar from "./SideBar";
 
 const Navbar = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <>
       <div className="flex flex-row justify-around bg-black text-white py-8">
+        {isSidebarOpen && <SideBar />}
+        <div onClick={toggleSidebar}>
+          <GiHamburgerMenu />
+        </div>
         <div>
           <h2>CrustyGrab</h2>
         </div>
