@@ -31,7 +31,9 @@ def get_restaurants():
     for restaurant in restaurants:
         restaurant_dict={
             "name": restaurant.name,
-            "address": restaurant.address
+            "address": restaurant.address,
+            "pizzas":[{"id": pizza.id, "name": pizza.name, "ingredients":pizza.ingredients}
+            for pizza in restaurant.pizzas]
         }
         restaurant_lists.append(restaurant_dict)
 
