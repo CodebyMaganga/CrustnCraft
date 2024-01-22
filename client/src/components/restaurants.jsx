@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Cafe from "../assets/cafe.jpg";
+import { Link } from "react-router-dom";
 
 const Restaurants = () => {
   const [cafe, setCafe] = useState([]);
@@ -23,10 +24,11 @@ const Restaurants = () => {
       <div className="flex flex-row flex-wrap gap-10 justify-around">
         {cafe.map((item, index) => (
           <div key={index} className="max-w-sm">
-            <img src={Cafe} alt="image" className="rounded-full h-[150px]" />
+            <Link to={`/restaurants/${index + 1}`}>
+              <img src={Cafe} alt="image" className="rounded-full h-[150px]" />
+            </Link>
             <div className="product-details">
               <h3 className="product-name">{item.name}</h3>
-              <p className="product-price">${item.adress}</p>
             </div>
           </div>
         ))}

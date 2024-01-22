@@ -1,24 +1,19 @@
-import "./App.css";
-import Navbar from "./components/navbar";
-import TopHero from "./components/topHero";
-import Pizzas from "./components/pizzas";
-import Restaurants from "./components/restaurants";
-import About from "./components/About";
-import FooterApp from "./components/footer";
-import ContactForm from "./components/ContactForm";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import GetRestaurant from "./components/GetRestaurant";
+import Home from "./Home";
+import Menu from "./Menu";
 
-function App() {
+const App = () => {
   return (
     <>
-      <Navbar />
-      <TopHero />
-      <Pizzas />
-      <Restaurants />
-      <About />
-      <ContactForm />
-      <FooterApp />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/restaurants/:id" element={<GetRestaurant />} />
+        <Route path="/menu" element={<Menu />} />
+      </Routes>
     </>
   );
-}
+};
 
 export default App;

@@ -24,6 +24,11 @@ const Pizzas = () => {
 
   return (
     <>
+      <div className="mt-5">
+        <h2 className="text-2xl font-bold text-center">
+          Choose various pizza delights
+        </h2>
+      </div>
       <div className="flex flex-row justify-around flex-wrap mt-10">
         <div>
           <button
@@ -79,10 +84,11 @@ const Pizzas = () => {
         {filteredPizzas.map((item, index) => (
           <div key={index} className="max-w-sm">
             <img src={Pic} alt="image" className="product-image" />
-            <div className="product-details">
-              <h3 className="product-name">{item.name}</h3>
-              <p className="product-price">${item.Price}</p>
-              <button className="add-to-cart-btn">Add to Cart</button>
+            <div className="">
+              <h3 className="">{item.name}</h3>
+              <button className="bg-[#C22B0F] p-4 rounded-full mt-2">
+                Add to Cart
+              </button>
             </div>
           </div>
         ))}

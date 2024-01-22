@@ -1,6 +1,7 @@
 import React from "react";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaPhoneFlip } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -11,7 +12,9 @@ const Navbar = () => {
         </div>
         <div>
           <a className="mr-2">Home</a>
-          <a className="mr-2">Menu</a>
+          <Link to="/menu">
+            <a className="mr-2">Menu</a>
+          </Link>
           <a>Contact</a>
         </div>
         <div className="flex flex-row gap-5">
