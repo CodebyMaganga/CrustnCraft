@@ -35,48 +35,53 @@ export default function Admin() {
   };
 
   return (
-    <form
-      onSubmit={(e) => handlePost(e)}
-      className="flex max-w-md flex-col gap-4 bg-black ml-2"
-    >
+    <>
       <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email1" value="Restaurant Id" />
-        </div>
-        <TextInput
-          className="text-black"
-          onChange={(e) => setRestaurant_id(e.target.value)}
-          id="email1"
-          type="text"
-          required
-        />
+        <h2>Add pizza and Restaurant</h2>
       </div>
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="password1" value="Pizza Id" />
+      <form
+        onSubmit={(e) => handlePost(e)}
+        className="flex max-w-md flex-col gap-4 bg-black ml-2"
+      >
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Restaurant Id" />
+          </div>
+          <TextInput
+            className="text-black"
+            onChange={(e) => setRestaurant_id(e.target.value)}
+            id="email1"
+            type="text"
+            required
+          />
         </div>
-        <TextInput
-          onChange={(e) => setPizza_id(e.target.value)}
-          id="password1"
-          type="text"
-          required
-        />
-      </div>
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="password1" value="Price" />
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="password1" value="Pizza Id" />
+          </div>
+          <TextInput
+            onChange={(e) => setPizza_id(e.target.value)}
+            id="password1"
+            type="text"
+            required
+          />
         </div>
-        <TextInput
-          onChange={(e) => setPrice(e.target.value)}
-          id="password1"
-          type="text"
-          required
-        />
-      </div>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="password1" value="Price" />
+          </div>
+          <TextInput
+            onChange={(e) => setPrice(e.target.value)}
+            id="password1"
+            type="text"
+            required
+          />
+        </div>
 
-      <Button className="bg-[#4B7F52]" type="submit">
-        Submit
-      </Button>
-    </form>
+        <Button className="bg-[#4B7F52]" type="submit">
+          Submit
+        </Button>
+      </form>
+    </>
   );
 }
