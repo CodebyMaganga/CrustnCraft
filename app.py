@@ -1,7 +1,7 @@
 from flask import Flask, make_response, jsonify, request
 from flask_restful import Resource, Api
 from flask_migrate import Migrate
-from models import db, Restaurant,Pizza
+from models import db, Restaurant,Pizza, restaurant_pizza
 from flask_cors import CORS
 
 
@@ -88,8 +88,8 @@ class GetPizzas(Resource):
 api.add_resource(GetPizzas, '/pizzas')
 
 
-"""
- @app.route('/restaurant_pizzas', methods=['POST'])
+
+@app.route('/restaurant_pizzas', methods=['POST'])
 def create_pizzeria():
     data = request.get_json()
 
@@ -103,16 +103,11 @@ def create_pizzeria():
     db.session.execute(new_item)
     db.session.commit()
 
-    new_pizza = Pizza.query.filter_by(id=data['pizza_id']).first()
-
-   
     
-    
+     
+    return jsonify({"message": "Item added succesfully"})
 
-    return make_response(jsonify(new_pizza.to_dict()), 200)
 
-    }
-"""
    
 
         

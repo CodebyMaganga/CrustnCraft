@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Pic from "../assets/pizzacard.jpg";
+import { BASE_URL } from "../../utils";
 
 const Pizzas = () => {
   const [pizza, setPizza] = useState([]);
   const [filteredCategory, setFilteredCategory] = useState("Mozarella Cheese");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/pizzas")
+    fetch(`${BASE_URL}/pizzas`)
       .then((resp) => resp.json())
       .then((data) => {
         console.log(data);

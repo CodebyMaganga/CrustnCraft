@@ -1,55 +1,82 @@
 "use client";
 
-import { Label, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { useState } from "react";
+import { BASE_URL } from "../utils";
 
 export default function Admin() {
+  const [restaurantId, setRestaurant_id] = useState("");
+  const [pizzaId, setPizza_id] = useState("");
+  const [price, setPrice] = useState("");
+
+  const handlePost = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`${BASE_URL}/restaurant_pizzas`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          restaurant_id: restaurantId,
+          pizza_id: pizzaId,
+          Price: price,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error("Error:", response.status, response.statusText);
+      } else {
+        console.log("Item added succesfully", response.status);
+      }
+    } catch (error) {
+      console.error("Error", error.message);
+    }
+  };
+
   return (
-    <div className="bg-[#30362F] text-white h-screen">
-      <div>Delete Restaurant</div>
-      <div className="flex max-w-md flex-col gap-4">
-        <div>
-          <div className="mb-2 block border-solid">
-            <Label htmlFor="small" value="Restaurant Name" />
-          </div>
-          <TextInput id="small" type="text" sizing="sm" />
+    <form
+      onSubmit={(e) => handlePost(e)}
+      className="flex max-w-md flex-col gap-4 bg-black ml-2"
+    >
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="email1" value="Restaurant Id" />
         </div>
-        <div>
-          <div className="mb-2 block border-solid">
-            <Label htmlFor="small" value="Restaurant Address" />
-          </div>
-          <TextInput id="small" type="text" sizing="sm" />
-        </div>
-        <div>
-          <button className="bg-[#625834] p-4 rounded-full">
-            Delete Restaurant
-          </button>
-        </div>
+        <TextInput
+          className="text-black"
+          onChange={(e) => setRestaurant_id(e.target.value)}
+          id="email1"
+          type="text"
+          required
+        />
       </div>
-      <div className="flex max-w-md flex-col gap-4 mt-10">
-        <div>
-          <div className="mb-2 block border-solid">
-            <Label htmlFor="small" value="Pizza Name" />
-          </div>
-          <TextInput id="small" type="text" sizing="sm" />
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="password1" value="Pizza Id" />
         </div>
-        <div>
-          <div className="mb-2 block border-solid">
-            <Label htmlFor="small" value="Pizza Ingredients" />
-          </div>
-          <TextInput id="small" type="text" sizing="sm" />
-        </div>
-        <div>
-          <div className="mb-2 block border-solid">
-            <Label htmlFor="small" value="Restaurant ID" />
-          </div>
-          <TextInput id="small" type="text" sizing="sm" />
-        </div>
-        <div>
-          <button className="bg-[#625834] p-4 rounded-full">
-            Add Pizza Flavor
-          </button>
-        </div>
+        <TextInput
+          onChange={(e) => setPizza_id(e.target.value)}
+          id="password1"
+          type="text"
+          required
+        />
       </div>
-    </div>
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="password1" value="Price" />
+        </div>
+        <TextInput
+          onChange={(e) => setPrice(e.target.value)}
+          id="password1"
+          type="text"
+          required
+        />
+      </div>
+
+      <Button className="bg-[#4B7F52]" type="submit">
+        Submit
+      </Button>
+    </form>
   );
 }

@@ -27,7 +27,9 @@ const Navbar = () => {
           <Link to="/menu">
             <a className="mr-2">Menu</a>
           </Link>
-          <a>Contact</a>
+          <Link to="/restaurants">
+            <a>Restaurants</a>
+          </Link>
         </div>
         <div className="flex flex-row gap-5">
           <div>
